@@ -3,18 +3,18 @@ services:
     - docker
 
 before_install:
-    - docker build -t winrono/docker-react -f Dockerfile.dev .
+    - docker build -t winrono/docker -f Dockerfile.dev .
 
 script:
-    - docker run -e CI=true winrono/docker-react npm run test
+    - docker run -e CI=true winrono/docker npm run test
 
 deploy:
     provider: elasticbeanstalk
     region: "eu-central-1"
-    app: "docker-react"
-    env: "DockerReact-env"
+    app: "docker"
+    env: "Docker-env"
     bucket_name: "elasticbeanstalk-eu-central-1-134850567237"
-    bucket_path: "docker-react"
+    bucket_path: "docker"
     on:
         branch: master
     access_key_id: $AWS_ACCESS_KEY

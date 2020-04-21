@@ -6,4 +6,4 @@ before_install:
     - docker build -t winrono/docker-react -f Dockerfile.dev .
 
 script:
-    - docker run winrono/docker-react npm run test -- --coverage
+    - docker run -e CI=true winrono/docker-react npm run test
